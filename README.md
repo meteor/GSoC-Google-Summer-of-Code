@@ -1,4 +1,4 @@
-# Welcome to Meteor - Google Summer of Code 2026 ☀️
+# Welcome to Meteor - Google Summer of Code 2026
 
 Welcome to the Meteor project! We're excited that you're interested in contributing to Meteor through Google Summer of Code 2026.
 
@@ -48,6 +48,8 @@ Google Summer of Code (GSoC) is a global program focused on bringing more studen
 ---
 
 ## How to Get Started
+
+### 0. Say Hello in our `gsoc` [discord channel](https://discord.gg/hZkTCaVjmT)
 
 ### 1. Explore the Codebase
 
@@ -100,7 +102,7 @@ Browse issues: [github.com/meteor/meteor/issues](https://github.com/meteor/meteo
 
 ## Project Ideas
 
-We have prepared several project ideas for GSoC 2026, ranging from small (90 hours) to large (350 hours) projects.
+We have prepared several project ideas for GSoC 2026, ranging from small (90 hours) to large (350 hours) projects, it's not related with the project dificult, just with the size.
 
 **See the full list:** [gsoc-2026-projects.md](gsoc-2026-projects.md)
 
@@ -120,9 +122,10 @@ We have prepared several project ideas for GSoC 2026, ranging from small (90 hou
 
 We also welcome original project ideas! If you have an idea that would benefit the Meteor ecosystem:
 
-1. Open a discussion on the [Meteor Forums](https://forums.meteor.com/)
-2. Get feedback from the community and maintainers
+1. Present your idea in the **#gsoc channel on Discord**
+2. Get feedback from the community and mentors
 3. Refine your proposal based on feedback
+4. Submit your final proposal through the #gsoc channel
 
 ---
 
@@ -165,23 +168,27 @@ A strong proposal should include:
 
 ## Communication Channels
 
-### Meteor Forums
-**Primary discussion platform**
+### Discord #gsoc Channel - Primary Communication Hub
 
-[forums.meteor.com](https://forums.meteor.com/)
+**All GSoC communication happens in the #gsoc channel on Discord.**
 
-- Ask questions about GSoC projects
-- Discuss implementation approaches
-- Get feedback on your proposal
+[Join Meteor Discord Server](https://discord.gg/hZkTCaVjmT)
 
-### Discord
-**Real-time chat**
+**Important:** The **#gsoc channel** is the official and primary communication channel for the entire GSoC program. All activities must happen there:
 
-[Meteor Discord Server](https://discord.gg/hZkTCaVjmT)
+- All proposal presentations and submissions
+- Questions about projects and requirements
+- Discussions with mentors and other candidates
+- Progress updates during the coding period
+- Weekly check-ins and status reports
+- Final project presentations
 
-- Quick questions and discussions
-- Connect with other contributors
-- Meet potential mentors
+**Why Discord?**
+- Real-time communication with mentors
+- Easy collaboration with other contributors
+- Quick feedback on ideas and questions
+- Community support and networking
+- Transparent process visible to all participants
 
 ### GitHub
 **Code and issues**
@@ -192,8 +199,14 @@ A strong proposal should include:
 - Report and discuss issues
 - Review existing code
 
-### Weekly Community Calls
-TODO
+### Meteor Forums
+**Additional discussions**
+
+[forums.meteor.com](https://forums.meteor.com/)
+
+- Long-form technical discussions
+- Archive of decisions and proposals
+- Community announcements
 
 ---
 
@@ -282,7 +295,7 @@ All participants in the Meteor community are expected to follow our [Code of Con
 
 ### Q: What if I have questions about a project?
 
-**A:** Ask! Use the forums or Discord to get clarification. Asking good questions shows initiative and helps you write a better proposal.
+**A:** Ask in the **#gsoc channel on Discord**! This is where all GSoC communication happens. Asking good questions shows initiative and helps you write a better proposal.
 
 ### Q: How much time should I dedicate?
 
@@ -299,20 +312,27 @@ All participants in the Meteor community are expected to follow our [Code of Con
 
 ## Next Steps
 
-1. **Explore**: Read the [project ideas](project-ideias-2026.md) and explore the codebase
-2. **Engage**: Join the [forums](https://forums.meteor.com/) and [Discord](https://discord.gg/hZkTCaVjmT)
-3. **Contribute**: Start with small contributions to get familiar with the process
-4. **Prepare**: Draft your proposal and get feedback before the deadline
-5. **Apply**: Submit your proposal during the application period
+1. **Join Discord**: Go to [discord.gg/hZkTCaVjmT](https://discord.gg/hZkTCaVjmT) and join the **#gsoc channel**
+2. **Introduce Yourself**: Say hi in #gsoc and tell us about your interests
+3. **Explore**: Read the [project ideas](gsoc-2026-projects.md) and explore the codebase
+4. **Engage**: Ask questions and discuss projects in the #gsoc channel
+5. **Contribute**: Start with small contributions to get familiar with the process
+6. **Present**: Share your proposal draft in #gsoc for feedback
+7. **Apply**: Submit your final proposal through the #gsoc channel
 
 ---
 
 ## Contact
 
-For GSoC-related questions:
-- **Forums**: [forums.meteor.com](https://forums.meteor.com/) (tag with `gsoc`)
-- **Discord**: [#gsoc channel](https://discord.gg/hZkTCaVjmT)
-- **GitHub**: Open an issue with the `gsoc` label
+**All GSoC communication must happen in the #gsoc channel on Discord.**
+
+[Join Discord and go to #gsoc](https://discord.gg/hZkTCaVjmT)
+
+This is where you will:
+- Ask questions and get support
+- Present your proposal to mentors
+- Receive feedback and guidance
+- Participate in all GSoC activities
 
 ---
 
