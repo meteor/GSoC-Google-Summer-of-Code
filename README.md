@@ -1,4 +1,4 @@
-# Welcome to Meteor - Google Summer of Code 2026
+# Welcome to Meteor - Google Summer of Code 2026 ☀️
 
 Welcome to the Meteor project! We're excited that you're interested in contributing to Meteor through Google Summer of Code 2026.
 
