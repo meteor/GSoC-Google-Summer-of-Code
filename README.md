@@ -36,12 +36,12 @@ Google Summer of Code (GSoC) is a global program focused on bringing more studen
 | Date | Milestone |
 |------|-----------|
 | January - February | Organizations apply to Google |
-| February 26 | Accepted organizations announced |
-| March 24 - April 8 | Student application period |
-| May 8 | Accepted students announced |
-| May 8 - June 1 | Community bonding period |
-| June 2 - August 25 | Coding period |
-| September 3 | Final results announced |
+| February | Accepted organizations announced |
+| March- April  | Student application period |
+| May  | Accepted students announced |
+| May - June 1 | Community bonding period |
+| June - August 25 | Coding period |
+| September | Final results announced |
 
 > **Note**: Dates are tentative. Please check the [official GSoC timeline](https://summerofcode.withgoogle.com/) for confirmed dates.
 
