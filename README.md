@@ -59,7 +59,7 @@ git clone https://github.com/meteor/meteor.git
 cd meteor
 
 # Read the development guide
-cat DEVELOPMENT.md
+less DEVELOPMENT.md
 
 # Explore the packages
 ls packages/
