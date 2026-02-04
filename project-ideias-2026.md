@@ -611,6 +611,165 @@ _To be assigned_
 
 ---
 
+## Project 8: MCP Server Generator Package
+
+### Description
+
+Create a Meteor package that automatically discovers all Meteor methods and HTTP endpoints from a Meteor application and dynamically generates a Model Context Protocol (MCP) server. This enables AI assistants and LLM-based tools to interact with Meteor applications through a standardized protocol.
+
+### Current State
+
+- **No MCP Integration**: Meteor has no built-in support for MCP servers
+- **Method Registry**: Methods are registered via `Meteor.methods()` but no centralized discovery API exists
+- **HTTP Endpoints**: REST endpoints created via `WebApp.connectHandlers` or packages like `simple:rest`
+- **DDP Protocol**: Meteor uses DDP for real-time communication, but this isn't accessible to MCP clients
+- **Documentation**: Method signatures and endpoints are not automatically documented or exposed
+
+### Goals
+
+1. **Method Discovery**: Automatically scan and catalog all registered Meteor methods
+2. **Endpoint Discovery**: Detect HTTP endpoints registered through WebApp and routing packages
+3. **MCP Server Generation**: Create a compliant MCP server exposing methods as tools
+4. **Schema Inference**: Extract parameter types from `check()` calls or TypeScript definitions
+5. **Runtime Updates**: Dynamically update the MCP server when new methods/endpoints are registered
+6. **Security Integration**: Respect existing method permissions and authentication
+
+### Technical Details
+
+**Key Files to Create:**
+- `packages/meteor-mcp/mcp-server.js` - MCP server implementation
+- `packages/meteor-mcp/method-discovery.js` - Method introspection utilities
+- `packages/meteor-mcp/endpoint-discovery.js` - HTTP endpoint detection
+- `packages/meteor-mcp/schema-extractor.js` - Parameter schema inference
+- `packages/meteor-mcp/package.js` - Package definition
+
+**Method Discovery Architecture:**
+```javascript
+// Hook into Meteor.methods registration
+const originalMethods = Meteor.methods;
+Meteor.methods = function(methods) {
+  Object.entries(methods).forEach(([name, fn]) => {
+    MethodRegistry.register(name, {
+      fn,
+      schema: extractSchema(fn),
+      description: extractJSDoc(fn),
+    });
+  });
+  return originalMethods.call(this, methods);
+};
+
+// Extract schema from check() calls
+function extractSchema(fn) {
+  // Parse function body for check() patterns
+  // check(arg, String) -> { type: 'string' }
+  // check(arg, { name: String, age: Number }) -> { type: 'object', properties: {...} }
+}
+```
+
+**MCP Server Implementation:**
+```javascript
+// MCP tool definition for a Meteor method
+{
+  name: "meteor_method_users_create",
+  description: "Create a new user in the system",
+  inputSchema: {
+    type: "object",
+    properties: {
+      name: { type: "string", description: "User's full name" },
+      email: { type: "string", format: "email" }
+    },
+    required: ["name", "email"]
+  }
+}
+
+// MCP server startup
+const mcpServer = new MeteorMCPServer({
+  name: "my-meteor-app",
+  version: "1.0.0",
+  transport: "stdio", // or "sse", "websocket"
+});
+
+mcpServer.exposeAllMethods();
+mcpServer.exposeEndpoints(['/api/*']);
+mcpServer.start();
+```
+
+**Proposed API:**
+```javascript
+// Server-side configuration
+import { MeteorMCP } from 'meteor/meteor-mcp';
+
+MeteorMCP.configure({
+  // Methods to expose (glob patterns supported)
+  methods: ['users.*', 'posts.*', '!admin.*'],
+
+  // HTTP endpoints to expose
+  endpoints: ['/api/v1/*'],
+
+  // Authentication handler
+  authenticate: async (credentials) => {
+    return Meteor.users.findOneAsync({ apiKey: credentials.token });
+  },
+
+  // Custom tool descriptions
+  descriptions: {
+    'users.create': 'Creates a new user account with the specified details',
+  },
+
+  // Transport options
+  transport: {
+    type: 'stdio', // 'stdio' | 'sse' | 'websocket'
+    port: 3001,    // for network transports
+  }
+});
+
+// Manual tool registration
+MeteorMCP.registerTool({
+  name: 'custom_operation',
+  description: 'A custom operation not based on a Meteor method',
+  inputSchema: { /* JSON Schema */ },
+  handler: async (args) => { /* ... */ }
+});
+```
+
+**Technologies:**
+- MCP SDK for Node.js (@modelcontextprotocol/sdk)
+- AST parsing for schema extraction (Babel parser)
+- JSON Schema for parameter validation
+- WebSocket/SSE for network transport options
+
+### Expected Outcomes
+
+- Drop-in package that exposes Meteor methods as MCP tools
+- Automatic schema inference from `check()` calls and TypeScript types
+- Support for multiple transport protocols (stdio, SSE, WebSocket)
+- Authentication and authorization integration with Meteor accounts
+- Dynamic updates when methods are added/removed at runtime
+- CLI command: `meteor mcp:inspect` to view discovered methods/endpoints
+- Comprehensive documentation with examples for popular AI tools
+
+### Skills Required
+
+- Deep understanding of Meteor's method system and DDP
+- MCP protocol specification knowledge
+- JavaScript AST parsing and code analysis
+- Node.js streams and IPC communication
+- Security best practices for API exposure
+
+### Difficulty Level
+
+**Hard**
+
+### Mentors
+
+_To be assigned_
+
+### Time Estimate
+
+**175 hours** (Medium project)
+
+---
+
 ## Summary
 
 | # | Project | Difficulty | Hours | Size |
@@ -622,6 +781,7 @@ _To be assigned_
 | 5 | .env Support | Hard | 175 | Medium |
 | 6 | Core Code Quality / Linting | Easy | 350 | Large |
 | 7 | Test Support Improvements | Hard | 350 | Large |
+| 8 | MCP Server Generator Package | Hard | 175 | Medium |
 
 ---
 
