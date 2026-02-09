@@ -770,6 +770,129 @@ _To be assigned_
 
 ---
 
+## Project 9: Load Testing Suite for Real-Time CRUD Applications
+
+### Description
+
+Create a comprehensive load testing suite for Meteor applications, including a fully-featured real-time CRUD demo application and Artillery-based load testing infrastructure. This project will provide the Meteor community with benchmarking tools and performance baselines for real-time applications.
+
+### Current State
+
+- **No Official Benchmarks**: Meteor lacks standardized performance benchmarks for real-time applications
+- **No Load Testing Tools**: No built-in or official load testing infrastructure for DDP connections
+- **Community Solutions**: Scattered community efforts with varying methodologies
+- **DDP Complexity**: Load testing DDP (WebSocket-based) requires specialized tooling beyond traditional HTTP benchmarks
+- **Real-Time Challenges**: Subscriptions, live queries, and optimistic UI add complexity to performance testing
+
+### Goals
+
+1. **Demo CRUD Application**: Build a complete real-time CRUD application showcasing Meteor best practices
+2. **Artillery Integration**: Create Artillery scripts for DDP load testing
+3. **Performance Baselines**: Establish benchmark metrics for common Meteor patterns
+4. **Scalability Testing**: Test horizontal scaling with multiple Meteor instances
+5. **Documentation**: Comprehensive guides for running and interpreting load tests
+
+### Technical Details
+
+**Demo Application Features:**
+```javascript
+// Full-featured CRUD app with:
+// - User authentication (accounts-password)
+// - Real-time collections with publications
+// - Methods for create, update, delete operations
+// - Optimistic UI patterns
+// - Role-based access control
+
+// Collections
+Tasks = new Mongo.Collection('tasks');
+Projects = new Mongo.Collection('projects');
+Comments = new Mongo.Collection('comments');
+
+// Publications with reactive joins
+Meteor.publish('tasks.byProject', function(projectId) {
+  return Tasks.find({ projectId, members: this.userId });
+});
+
+// Methods with validation
+Meteor.methods({
+  'tasks.create': async function(task) {
+    check(task, {
+      title: String,
+      projectId: String,
+      priority: Match.OneOf('low', 'medium', 'high')
+    });
+    return Tasks.insertAsync({ ...task, createdBy: this.userId });
+  }
+});
+```
+
+**Metrics to Capture:**
+```javascript
+// Custom Meteor metrics for Artillery
+const metrics = {
+  // DDP metrics
+  'ddp.connections.active': gauge,
+  'ddp.subscriptions.active': gauge,
+  'ddp.messages.sent': counter,
+  'ddp.messages.received': counter,
+
+  // Method metrics
+  'method.latency.p50': histogram,
+  'method.latency.p95': histogram,
+  'method.latency.p99': histogram,
+  'method.errors': counter,
+
+  // MongoDB metrics
+  'mongo.ops.find': counter,
+  'mongo.ops.insert': counter,
+  'mongo.ops.update': counter,
+  'mongo.latency': histogram,
+
+  // System metrics
+  'memory.heapUsed': gauge,
+  'cpu.usage': gauge,
+  'eventLoop.lag': gauge
+};
+```
+
+
+**Technologies:**
+- Artillery.io for load testing orchestration
+- Custom DDP engine for WebSocket testing
+- Docker/Docker Compose for infrastructure
+- Prometheus/Grafana for metrics visualization
+- MongoDB for database load testing
+
+### Expected Outcomes
+
+- Production-ready demo CRUD application demonstrating Meteor best practices
+- Artillery DDP engine package for WebSocket-based load testing
+- Comprehensive test scenarios for common Meteor patterns
+- Performance baselines and benchmarks for the community
+- Docker-based infrastructure for reproducible testing
+- Detailed documentation for running and customizing load tests
+- CI/CD integration examples for automated performance regression testing
+
+### Skills Required
+
+- Meteor application development (methods, publications, collections)
+- Load testing concepts and tools (Artillery, k6, or similar)
+- Docker and container orchestration
+
+### Difficulty Level
+
+**Medium**
+
+### Mentors
+
+_To be assigned_
+
+### Time Estimate
+
+**175 hours** (Medium project)
+
+---
+
 ## Summary
 
 | # | Project | Difficulty | Hours | Size |
@@ -779,9 +902,10 @@ _To be assigned_
 | 3 | TypeScript Improvements | Medium | 175 | Medium |
 | 4 | OpenTelemetry Support | Hard | 175 | Medium |
 | 5 | .env Support | Hard | 175 | Medium |
+| 8 | MCP Server Generator Package | Hard | 175 | Medium |
+| 9 | Load Testing Suite for Real-Time CRUD | Medium | 175 | Medium |
 | 6 | Core Code Quality / Linting | Easy | 350 | Large |
 | 7 | Test Support Improvements | Hard | 350 | Large |
-| 8 | MCP Server Generator Package | Hard | 175 | Medium |
 
 ---
 
