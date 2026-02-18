@@ -104,7 +104,7 @@ Browse issues: [github.com/meteor/meteor/issues](https://github.com/meteor/meteo
 
 We have prepared several project ideas for GSoC 2026, ranging from small (90 hours) to large (350 hours) projects, it's not related with the project dificult, just with the size.
 
-**See the full list:** [gsoc-2026-projects.md](gsoc-2026-projects.md)
+**See the full list:** [gsoc-2026-projects.md](https://github.com/meteor/GSoC-Google-Summer-of-Code/blob/main/project-ideias-2026.md)
 
 ### Quick Overview
 
